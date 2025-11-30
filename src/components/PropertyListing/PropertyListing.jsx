@@ -24,13 +24,13 @@ const PropertyListing = () => {
     }, []);
 
     return (
-        <section className="property-listing">
+        <ul className="property-listing">
             {properties.map((property) => (
-                <div key={property.id} data-testid="property-card">
+                <li key={property.id}>
                     <PropertyCard {...property} />
-                </div>
+                </li>
             ))}
-        </section>
+        </ul>
     );
 };
 

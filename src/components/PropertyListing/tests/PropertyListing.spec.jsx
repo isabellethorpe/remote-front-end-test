@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render, screen, within } from '@testing-library/react';
 import PropertyListing from '../PropertyListing';
 
 describe('PropertyListing', () => {
@@ -22,7 +23,9 @@ describe('PropertyListing', () => {
     it('should render five property cards', async () => {
         render(<PropertyListing />);
 
-        const propertyCards = await screen.findAllByTestId('property-card');
+        const propertiesList = await screen.findByRole('list');
+
+        const propertyCards = await within(propertiesList).findAllByRole('listitem');
 
         expect(propertyCards).toHaveLength(5);
     });
